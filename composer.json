@@ -1,0 +1,22 @@
+{
+    "name": "symfony-bundle/fontawesome-bundle",
+    "type": "symfony-bundle",
+    "description": "Font Awesome Bundle",
+    "keywords": ["font", "awesome"],
+    "homepage": "https://git.anezi.net/symfony/fontawesomebundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hassan AMOUHZI",
+            "email": "hassan@amouhzi.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "fortawesome/font-awesome": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": { "Anezi\\Bundle\\FontAwesomeBundle": "" }
+    },
+    "target-dir": "Anezi/Bundle/FontAwesomeBundle"
+}
