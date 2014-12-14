@@ -1,0 +1,123 @@
+{% trans_default_domain "messages" %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ app.request.locale }}"
+      lang="{{ app.request.locale }}" dir="{% block direction %}ltr{% endblock direction %}">
+<head>
+    {% block head %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="{{ _charset }}"/>
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite'
+            'bundles/bootstrap/css/bootstrap.css'
+            'bundles/fontawesome-assets/css/font-awesome.css'
+            'bundles/highlight-extra/css/native.css'
+            'css/docs.css' %}
+            <link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock stylesheets %}
+        {% block javascripts %}
+            {% javascripts
+            'bundles/jquery-extra/jquery.js'
+            'bundles/bootstrap/js/bootstrap.js'
+            'bundles/zeroclipboard-assets/ZeroClipboard.js'
+            'js/application.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script>
+                var copy_to_clipboard = '{{ 'copy_to_clipboard'|trans }}';
+                var copied = '{{ 'copied'|trans }}';
+            </script>
+        {% endblock javascripts %}
+        {% stylesheets 'bundles/zeroclipboard-assets/ZeroClipboard.swf'
+        output='flash/ZeroClipboard.swf' %}
+        {% endstylesheets %}
+        {% stylesheets 'bundles/bootstrap/css/bootstrap.css.map'
+        output='css/bootstrap.css.map' %}
+        {% endstylesheets %}
+        <title>{% block pageTitle %}{% endblock pageTitle %} - Anezi.net</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
+    {% endblock head %}
+</head>
+<body {% block body_attributes %}{% endblock body_attributes %}>
+{% block body %}
+    <nav class="navbar navbar-default navbar-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#navbar-collapse">
+                    <span class="sr-only">{{ 'toggle_navigation'|trans }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    Anezi Bundles
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" data-target="#" data-toggle="dropdown">
+                            <i class="fa fa-globe"></i>
+                            {% if app.request.get('_locale') == 'fr' %}
+                                Français
+                            {% endif %}
+                            {% if app.request.get('_locale') == 'en' %}
+                                English
+                            {% endif %}
+                            <i class="fa fa-angle-down color"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-mini" role="menu">
+                            {% if app.request.get('_locale') != 'fr' %}
+                                {% if extra_route_params is defined %}
+                                    {% set route_params = route_params|merge(extra_route_params) %}
+                                {% endif %}
+                                <li>
+                                    <i class="fa fa-globe"></i>
+                                    {% set route_params = app.request.get('_route_params') %}
+                                    <a href="{{ path(app.request.get('_route'),
+                                    route_params|merge({'_locale': 'fr'})) }}">
+                                        Français
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if app.request.get('_locale') != 'en' %}
+                                <li>
+                                    <i class="fa fa-globe"></i>
+                                    <a href="{{ path(app.request.get('_route'),
+                                    app.request.get('_route_params')|merge({'_locale': 'en'})) }}">
+                                        English
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+            <div class="row">
+                <div class="col-sm-12">
+                    {% block main %}
+                        {% block mainContentOfPage %}{% endblock %}
+                    {% endblock main %}
+                </div>
+            </div>
+        {% endblock content %}
+    </div>
+{% endblock body %}
+{% block body_extra %}
+{% endblock body_extra %}
+<script>
+    window.twttr = (function (d,s,id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+        js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+</script>
+</body>
+</html>

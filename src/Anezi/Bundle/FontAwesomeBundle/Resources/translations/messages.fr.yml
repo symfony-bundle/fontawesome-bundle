@@ -1,0 +1,55 @@
+bundle:
+    title: FontAwesome Bundle pour Symfony
+    description: >
+        Ce <i>Bundle</i> vous permet de les utiliser facilement dans vos projets Symfony.
+
+library:
+    description: >
+        %name% vous donne des icônes vectorielles évolutives qui peuvent
+        instantanément être personnalisé - La taille, la couleur, l'ombre portée,
+        et tout ce qui peut être fait avec la puissance de CSS.
+
+docs:
+    installation:
+        title: Installation
+        systemRequirements:
+            title: Configuration requise
+            content1: Aucune configuration requise pour ce bundle
+            content2: Les packages nécessaires seront automatiquement installés
+            content3: voir le fichier %file% pour plus de détails
+        composerRequirements:
+            title: Configuration de Composer
+            content: Ajouter ce paquet dans votre fichier composer.json
+        enableAssetsInstaller:
+            title: Activer l'installateur des <i>assets</i>
+            content1: Ajouter cette ligne
+            content2: >
+                dans les sections post-install-cmd and post-update-cmd de votre composer.json
+            content3: Comme ceci
+        bundleActivation:
+            title: Activation du <i>Bundle</i>
+            content: Ajouter ce <i>Bundle</i> dans le noyeau de votre application
+        projectUpdate:
+            title: Mettre à jour le projet
+    usage:
+        title: Usage
+        twigAssets:
+            title: Les templates <i>Twig</i>
+        docs:
+            title: Documentation de <i>Font Awsome</i>
+            content: >
+                Pour la documentation de Font Awsome, veuillez suivre
+                    <a href="http://fortawesome.github.io/Font-Awesome/">
+                        ce lien
+                    </a>.
+    license:
+        title: Auteurs et license d'utilisation
+        content1: >
+            <a href="http://fortawesome.github.io/Font-Awesome/">
+            <b>Font Awesome</b></a> écrit par
+            <a href="http://twitter.com/davegandy"><b>Dave Gandy</b></a>
+            est distribué sous licence
+            <a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a>.
+        content2: >
+            Ce bundle est disponible sous license MIT, et son auteur est
+            <b>Hassan Amouhzi</a>

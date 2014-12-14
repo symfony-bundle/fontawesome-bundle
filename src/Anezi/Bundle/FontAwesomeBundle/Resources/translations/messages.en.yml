@@ -1,0 +1,55 @@
+bundle:
+    title: FontAwesome Bundle for Symfony
+    description: >
+        This bundle lets you easily use them in your Symfony projects.
+
+library:
+    description: >
+        %name% gives you scalable vector icons that can instantly be customized — size,
+        color, drop shadow, and anything that can be done with the power of CSS.
+
+docs:
+    installation:
+        title: Installation
+        systemRequirements:
+            title: System requirements
+            content1: No system requirements for this bundle
+            content2: Required packages will be installed automatically
+            content3: see %file% file for more details
+        composerRequirements:
+            title: Composer requirements
+            content: Add bundle to your composer.json file
+        enableAssetsInstaller:
+            title: Enable assets installer
+            content1: Add this line
+            content2: >
+                in post-install-cmd and post-update-cmd sections of your composer.json
+            content2: It will looks like
+        bundleActivation:
+            title: Bundle activation
+            content: Add bundle to your application kernel
+        projectUpdate:
+            title: Project update
+    usage:
+        title: Usage
+        twigAssets:
+            title: Twig templates
+        docs:
+            title: Font Awesome Documentation
+            content: >
+                For Font Awesome documentation, please follow:
+                    <a href="http://fortawesome.github.io/Font-Awesome/">
+                        this link
+                    </a>.
+    license:
+        title: Autors and license
+        content1: >
+            <a href="http://fortawesome.github.io/Font-Awesome/">
+            <b>Font Awesome</b></a> by <b>
+            <a href="http://twitter.com/davegandy">Dave Gandy</a>
+            </b>
+            is licenced under the
+            <a href="http://scripts.sil.org/OFL">SIL OFL 1.1</a>.
+        content2: >
+            This bundle is available under the MIT license, and the autor is
+            <b>Hassan Amouhzi</a>

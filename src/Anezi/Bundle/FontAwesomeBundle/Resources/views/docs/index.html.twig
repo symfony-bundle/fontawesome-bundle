@@ -1,0 +1,171 @@
+{% extends "::base.html.twig" %}
+{% trans_default_domain "messages" %}
+{% block mainContentOfPage %}
+<h1>{{ 'bundle.title'|trans }}</h1>
+
+<p>{{ 'library.description'|trans({'%name%': '<a href="http://fortawesome.github.io/Font-Awesome/"><b>' ~ title ~ '</b></a>'})|raw }}</p>
+
+<p>{{ 'bundle.description'|trans|raw }}</p>
+    
+    {% for number,header in headers %}
+        <h2 id="{{ header.id }}">
+            {{ number + 1 }}.
+            {{ ('docs.' ~ header.id ~ '.title')|trans }}
+        </h2>
+        {{ block(header.id) }}
+        {% if header.children is defined %}
+            {% for subnumber,subheader in header.children %}
+                <h3 id="{{ subheader.id }}">
+                    {{ number + 1 }}.{{ subnumber + 1 }}
+                    {{ ('docs.' ~ header.id ~ '.' ~ subheader.id ~ '.title')|trans|raw }}
+                </h3>
+                {{ block(subheader.id) }}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+    <footer>
+        <div class="container">
+            <div>
+                <ul class="docs-social-buttons">
+                    <li>
+                        <iframe class="github-btn"
+                                src="https://mdo.github.io/github-buttons/github-btn.html?user=symfony-bundle&amp;repo={{ title|lower }}-bundle&amp;type=watch&amp;count=true"
+                                width="100" height="20" title="Star on GitHub">
+                        </iframe>
+                    </li>
+                    <li>
+                        <iframe class="github-btn" src="https://mdo.github.io/github-buttons/github-btn.html?user=symfony-bundle&amp;repo={{ title|lower }}-bundle&amp;type=fork&amp;count=true"
+                                width="100" height="20" title="Fork on GitHub"></iframe>
+                    </li>
+                    <li class="follow-btn">
+                        <a href="https://twitter.com/HassanAmouhzi"
+                           class="twitter-follow-button" data-link-color="#0069D6"
+                           data-show-count="true">Follow @HassanAmouhzi</a>
+                    </li>
+                    <li class="tweet-btn">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{app.request.uri}}" data-count="horizontal" data-via="HassanAmouhzi" data-related="HassanAmouhzi:Creator of Anezi.net">Tweet</a>
+                    </li>
+                </ul>
+            </div>
+            <p>
+                Documentation licensed under
+                <a href="http://creativecommons.org/licenses/by/3.0/">
+                    CC BY 3.0</a>.
+            </p>
+            <ul class="docs-footer-links muted">
+                <li>Currently v{{ current_version }}</li>
+                <li>&middot;</li>
+                <li><a href="https://github.com/symfony-bundle/{{ title|lower }}-bundle/issues">Issues</a></li>
+                <li>&middot;</li>
+                <li><a href="https://github.com/symfony-bundle/{{ title|lower }}-bundle/releases">Releases</a></li>
+            </ul>
+        </div>
+    </footer>
+{% endblock mainContentOfPage %}
+
+{% block systemRequirements %}
+            <p>
+                {{ 'docs.installation.systemRequirements.content1'|trans }}.
+                {{ 'docs.installation.systemRequirements.content2'|trans }},
+                {{ 'docs.installation.systemRequirements.content3'|trans
+                ({'%file%' : '<a href="https://github.com/symfony-bundle/' ~
+                title|lower ~ '-bundle/blob/master/composer.json"><b>Composer.json</b></a>'})|raw
+                }}.
+            </p>
+{% endblock systemRequirements %}
+
+{% block composerRequirements %}
+<p>
+    {{ 'docs.installation.composerRequirements.content'|trans }}
+</p>
+
+{% highlight json %}
+{
+    "require": {
+        "symfony-bundle/{{ title|lower }}-bundle": "{{ composer_version }}"
+    }
+}
+{% endhighlight %}
+{% endblock composerRequirements %}
+
+{% block enableAssetsInstaller %}
+<p>
+    {{ 'docs.installation.enableAssetsInstaller.content1'|trans }}
+    <code>Anezi\\Bundle\\{{ title }}Bundle\\Composer\\ScriptHandler\\installAssets</code>
+    {{ 'docs.installation.enableAssetsInstaller.content2'|trans }}.
+    {{ 'docs.installation.enableAssetsInstaller.content3'|trans }}:
+</p>
+{% highlight json %}
+{
+    "scripts": {
+        "post-install-cmd": [
+            "Anezi\\Bundle\\{{ title }}Bundle\\Composer\\ScriptHandler::installAssets"
+        ],
+        "post-update-cmd": [
+            "Anezi\\Bundle\\{{ title }}Bundle\\Composer\\ScriptHandler::installAssets"
+        ]
+    }
+}
+{% endhighlight %}
+{% endblock enableAssetsInstaller %}
+
+{% block bundleActivation %}
+<p>
+    {{ 'docs.installation.bundleActivation.content'|trans|raw }}.
+</p>
+{% highlight php %}
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Anezi\Bundle\{{ title }}Bundle\{{ title }}Bundle(),
+        // ...
+    );
+}
+?>{% endhighlight %}
+{% endblock bundleActivation %}
+
+{% block projectUpdate %}
+{{ highlight('$ composer update', 'bash') }}
+{% endblock projectUpdate %}
+
+{% block twigAssets %}
+    {% highlight htmltwig %}{% verbatim %}
+<link href="{{ asset('bundles/fontawesome-assets/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
+{% endverbatim %}{% endhighlight %}
+{% endblock twigAssets %}
+
+{% block license %}
+    <p>{{ 'docs.license.content1'|trans|raw }}</p>
+    <p>{{ 'docs.license.content2'|trans|raw }}</p>
+{% endblock license %}
+
+{% block docs %}
+    <p>{{ 'docs.usage.docs.content'|trans|raw }}</p>
+
+    <span class="fa-stack fa-lg">
+  <i class="fa fa-square-o fa-stack-2x"></i>
+  <i class="fa fa-twitter fa-stack-1x"></i>
+</span>
+    fa-twitter on fa-square-o<br>
+    <span class="fa-stack fa-lg">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+</span>
+    fa-flag on fa-circle<br>
+    <span class="fa-stack fa-lg">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+</span>
+    fa-terminal on fa-square<br>
+    <span class="fa-stack fa-lg">
+  <i class="fa fa-camera fa-stack-1x"></i>
+  <i class="fa fa-ban fa-stack-2x text-danger"></i>
+</span>
+    fa-ban on fa-camera
+
+{% endblock docs %}

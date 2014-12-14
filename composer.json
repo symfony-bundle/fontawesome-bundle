@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Font Awesome Bundle",
     "keywords": ["font", "awesome"],
-    "homepage": "https://git.anezi.net/symfony/fontawesomebundle",
+    "homepage": "http://symfony.anezi.net/fontawesome-bundle",
     "license": "MIT",
     "authors": [
         {
@@ -12,11 +12,63 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9",
-        "fortawesome/font-awesome": "4.2.*"
+        "php": ">=5.3.9"
+    },
+    "require-dev": {
+        "symfony/symfony": "~2.6",
+        "twig/extensions": "~1.2",
+        "symfony/assetic-bundle": "~2.5",
+        "sensio/distribution-bundle": "~3.0",
+        "sensio/framework-extra-bundle": "~3.0",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "phpunit/phpunit": "~4.4",
+        "symfony-bundle/bootstrap-bundle": "~3.2",
+        "symfony-bundle/highlight-bundle": "~1.0",
+        "version/version": "~2.0"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
+        ],
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Anezi\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::copyFilesToBundle",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Anezi\\Bundle\\JQueryBundle\\Composer\\ScriptHandler::installAssets",
+            "Anezi\\Bundle\\HighlightBundle\\Composer\\ScriptHandler::installExtraAssets",
+            "Anezi\\Bundle\\FontAwesomeBundle\\Composer\\ScriptHandler::installAssets"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Anezi\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::copyFilesToBundle",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Anezi\\Bundle\\JQueryBundle\\Composer\\ScriptHandler::installAssets",
+            "Anezi\\Bundle\\HighlightBundle\\Composer\\ScriptHandler::installExtraAssets",
+            "Anezi\\Bundle\\FontAwesomeBundle\\Composer\\ScriptHandler::installAssets"
+        ]
     },
     "autoload": {
-        "psr-0": { "Anezi\\Bundle\\FontAwesomeBundle": "" }
+        "psr-0": { "Anezi\\Bundle\\FontAwesomeBundle": "src/" }
     },
-    "target-dir": "Anezi/Bundle/FontAwesomeBundle"
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "jquery-version": "*",
+        "zeroclipboard-version": "*",
+        "fontawesome-version": "*"
+    }
 }
