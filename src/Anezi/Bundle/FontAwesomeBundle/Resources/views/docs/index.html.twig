@@ -1,11 +1,11 @@
 {% extends "::base.html.twig" %}
 {% trans_default_domain "messages" %}
 {% block mainContentOfPage %}
-<h1>{{ 'bundle.title'|trans }}</h1>
+<h1>{{ 'fontawesomebundle_title'|trans }}</h1>
 
 <p>{{ 'library.description'|trans({'%name%': '<a href="http://fortawesome.github.io/Font-Awesome/"><b>' ~ title ~ '</b></a>'})|raw }}</p>
 
-<p>{{ 'bundle.description'|trans|raw }}</p>
+<p>{{ 'fontawesomebundle_description'|trans|raw }}</p>
     
     {% for number,header in headers %}
         <h2 id="{{ header.id }}">

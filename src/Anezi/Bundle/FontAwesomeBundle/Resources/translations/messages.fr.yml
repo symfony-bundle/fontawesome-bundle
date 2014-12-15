@@ -1,6 +1,5 @@
-bundle:
-    title: FontAwesome Bundle pour Symfony
-    description: >
+fontawesomebundle_title: FontAwesome Bundle pour Symfony
+fontawesomebundle_description: >
         Ce <i>Bundle</i> vous permet de les utiliser facilement dans vos projets Symfony.
 
 library:

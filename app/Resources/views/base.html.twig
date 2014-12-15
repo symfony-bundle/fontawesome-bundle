@@ -74,19 +74,19 @@
                                     {% set route_params = route_params|merge(extra_route_params) %}
                                 {% endif %}
                                 <li>
-                                    <i class="fa fa-globe"></i>
                                     {% set route_params = app.request.get('_route_params') %}
                                     <a href="{{ path(app.request.get('_route'),
                                     route_params|merge({'_locale': 'fr'})) }}">
+                                        <i class="fa fa-globe"></i>
                                         Français
                                     </a>
                                 </li>
                             {% endif %}
                             {% if app.request.get('_locale') != 'en' %}
                                 <li>
-                                    <i class="fa fa-globe"></i>
                                     <a href="{{ path(app.request.get('_route'),
                                     app.request.get('_route_params')|merge({'_locale': 'en'})) }}">
+                                        <i class="fa fa-globe"></i>
                                         English
                                     </a>
                                 </li>
