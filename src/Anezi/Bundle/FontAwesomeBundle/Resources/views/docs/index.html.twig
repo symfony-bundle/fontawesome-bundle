@@ -3,21 +3,21 @@
 {% block mainContentOfPage %}
 <h1>{{ 'fontawesomebundle_title'|trans }}</h1>
 
-<p>{{ 'library.description'|trans({'%name%': '<a href="http://fortawesome.github.io/Font-Awesome/"><b>' ~ title ~ '</b></a>'})|raw }}</p>
+<p>{{ 'fontawesome_library.description'|trans({'%name%': '<a href="http://fortawesome.github.io/Font-Awesome/"><b>' ~ title ~ '</b></a>'})|raw }}</p>
 
 <p>{{ 'fontawesomebundle_description'|trans|raw }}</p>
     
     {% for number,header in headers %}
         <h2 id="{{ header.id }}">
             {{ number + 1 }}.
-            {{ ('docs.' ~ header.id ~ '.title')|trans }}
+            {{ ('fontawesome_docs.' ~ header.id ~ '.title')|trans }}
         </h2>
         {{ block(header.id) }}
         {% if header.children is defined %}
             {% for subnumber,subheader in header.children %}
                 <h3 id="{{ subheader.id }}">
                     {{ number + 1 }}.{{ subnumber + 1 }}
-                    {{ ('docs.' ~ header.id ~ '.' ~ subheader.id ~ '.title')|trans|raw }}
+                    {{ ('fontawesome_docs.' ~ header.id ~ '.' ~ subheader.id ~ '.title')|trans|raw }}
                 </h3>
                 {{ block(subheader.id) }}
             {% endfor %}
@@ -66,9 +66,9 @@
 
 {% block systemRequirements %}
             <p>
-                {{ 'docs.installation.systemRequirements.content1'|trans }}.
-                {{ 'docs.installation.systemRequirements.content2'|trans }},
-                {{ 'docs.installation.systemRequirements.content3'|trans
+                {{ 'fontawesome_docs.installation.systemRequirements.content1'|trans }}.
+                {{ 'fontawesome_docs.installation.systemRequirements.content2'|trans }},
+                {{ 'fontawesome_docs.installation.systemRequirements.content3'|trans
                 ({'%file%' : '<a href="https://github.com/symfony-bundle/' ~
                 title|lower ~ '-bundle/blob/master/composer.json"><b>Composer.json</b></a>'})|raw
                 }}.
@@ -77,7 +77,7 @@
 
 {% block composerRequirements %}
 <p>
-    {{ 'docs.installation.composerRequirements.content'|trans }}
+    {{ 'fontawesome_docs.installation.composerRequirements.content'|trans }}
 </p>
 
 {% highlight json %}
@@ -91,10 +91,10 @@
 
 {% block enableAssetsInstaller %}
 <p>
-    {{ 'docs.installation.enableAssetsInstaller.content1'|trans }}
+    {{ 'fontawesome_docs.installation.enableAssetsInstaller.content1'|trans }}
     <code>Anezi\\Bundle\\{{ title }}Bundle\\Composer\\ScriptHandler\\installAssets</code>
-    {{ 'docs.installation.enableAssetsInstaller.content2'|trans }}.
-    {{ 'docs.installation.enableAssetsInstaller.content3'|trans }}:
+    {{ 'fontawesome_docs.installation.enableAssetsInstaller.content2'|trans }}.
+    {{ 'fontawesome_docs.installation.enableAssetsInstaller.content3'|trans }}:
 </p>
 {% highlight json %}
 {
@@ -112,7 +112,7 @@
 
 {% block bundleActivation %}
 <p>
-    {{ 'docs.installation.bundleActivation.content'|trans|raw }}.
+    {{ 'fontawesome_docs.installation.bundleActivation.content'|trans|raw }}.
 </p>
 {% highlight php %}
 <?php
@@ -140,12 +140,12 @@ public function registerBundles()
 {% endblock twigAssets %}
 
 {% block license %}
-    <p>{{ 'docs.license.content1'|trans|raw }}</p>
-    <p>{{ 'docs.license.content2'|trans|raw }}</p>
+    <p>{{ 'fontawesome_docs.license.content1'|trans|raw }}</p>
+    <p>{{ 'fontawesome_docs.license.content2'|trans|raw }}</p>
 {% endblock license %}
 
 {% block docs %}
-    <p>{{ 'docs.usage.docs.content'|trans|raw }}</p>
+    <p>{{ 'fontawesome_docs.usage.docs.content'|trans|raw }}</p>
 
     <span class="fa-stack fa-lg">
   <i class="fa fa-square-o fa-stack-2x"></i>

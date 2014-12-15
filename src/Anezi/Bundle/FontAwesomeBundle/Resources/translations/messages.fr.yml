@@ -2,13 +2,13 @@ fontawesomebundle_title: FontAwesome Bundle pour Symfony
 fontawesomebundle_description: >
         Ce <i>Bundle</i> vous permet de les utiliser facilement dans vos projets Symfony.
 
-library:
+fontawesome_library:
     description: >
         %name% vous donne des icônes vectorielles évolutives qui peuvent
         instantanément être personnalisé - La taille, la couleur, l'ombre portée,
         et tout ce qui peut être fait avec la puissance de CSS.
 
-docs:
+fontawesome_docs:
     installation:
         title: Installation
         systemRequirements:
